@@ -1,16 +1,82 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="uk">
+<head>
     <meta charset="UTF-8">
     <title>My Page</title>
-
-
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+<section class="first">
+    <section class="adding">
+        <input type="text" placeholder="Назва товару">
+        <button style="color:white">Додати</button>
+    </section>
+    <hr/>
+    <section class="good">
+        <section class="name">Помідори</section>
+        <section class="num">
+            <span class="remove" style="visibility: hidden">-</span>
+            <span class="number">2</span>
+            <span class="add" style="visibility: hidden">+</span>
+        </section>
+        <section class="status">
+            <button class="but">Не куплено</button>
+        </section>
+    </section>
+    <hr/>
+    <section class="good">
+        <section class="name">Печиво</section>
+        <section class="num">
+            <span><b>-</b></span>
+            <span>2</span>
+            <span><b>+</b></span>
+        </section>
+        <section class="status">
+            <button class="but">Куплено</button>
+            <span><b>x</b></span>
+        </section>
+    </section>
+    <hr/>
+    <section class="good">
+        <section> <input type="text" placeholder="Сир"></section>
+        <section class="num">
+            <span><b>-</b></span>
+            <span>1</span>
+            <span><b>+</b></span>
+        </section>
+        <section class="status">
+            <button class="but">Куплено</button>
+            <span><b>x</b></span>
+        </section>
+    </section>
+</section>
+    <section class="second">
+        <section class="aside"><b>Залишилося</b></section>
+        <hr/>
+        <section class="basket">
+            <span class="product-item">
+                Печиво
+                <span class="amount">2</span>
+            </span>
+            <span class="product-item">
+                Сир
+                <span class="amount">1</span>
+            </span>
+        </section>
+        <hr/>
+        <section class="aside"><b>Куплено</b></section>
+        <hr/>
+        <section class="basket">
+             <span class="product-item">
+                Помідори
+                <span class="amount">2</span>
+            </span>
+        </section>
+
+    </section>
+    <!--	<span class="product-item">-->
+    <!--		Apple-->
+    <!--		<span class="amount">4</span>-->
+    <!--	</span>-->
 </body>
 </html>
