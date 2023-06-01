@@ -3,80 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-<body>
+<body class="allElement">
 <section class="first">
     <section class="adding">
-        <input type="text" placeholder="Назва товару">
-        <button style="color:white">Додати</button>
+        <input type="text" placeholder=" Назва товару" class="inpName">
+        <button class="butAdd tooltip" data-tooltip="add item" >Додати</button>
     </section>
     <hr/>
-    <section class="good">
-        <section class="name">Помідори</section>
+    <section class="firstItem">
+        <section class="name1">Помідори</section>
         <section class="num">
-            <span class="remove" style="visibility: hidden">-</span>
+            <span class="remove1 circle tooltip" data-tooltip="minus">-</span>
             <span class="number">2</span>
-            <span class="add" style="visibility: hidden">+</span>
+            <span class="add1 circle tooltip" data-tooltip="plus">+</span>
         </section>
         <section class="status">
-            <button class="but">Не куплено</button>
+            <button class="but tooltip" data-tooltip="item not bought">Не куплено</button>
+            <button class="removebut1 tooltip"data-tooltip="delete item" >x</button>
         </section>
     </section>
     <hr/>
-    <section class="good">
-        <section class="name">Печиво</section>
+    <section class="secondItem">
+        <section class="name2">Печиво</section>
         <section class="num">
-            <span><b>-</b></span>
-            <span>2</span>
-            <span><b>+</b></span>
+            <span class="remove2 circle tooltip" data-tooltip="minus">-</span>
+            <span class="number">2</span>
+            <span class="add circle tooltip"  data-tooltip="plus">+</span>
         </section>
         <section class="status">
-            <button class="but">Куплено</button>
-            <span><b>x</b></span>
+            <button class="but tooltip" data-tooltip="item bought" >Куплено</button>
+            <button class="removebut tooltip" data-tooltip="delete item" >x</button>
         </section>
     </section>
     <hr/>
-    <section class="good">
-        <section> <input type="text" placeholder="Сир"></section>
+    <section class="thirdItem">
+        <section class="name3"> <input type="text" placeholder="Сир"></section>
         <section class="num">
-            <span><b>-</b></span>
-            <span>1</span>
-            <span><b>+</b></span>
+          <span  class="remove3 circle tooltip"  data-tooltip="minus">-</span>
+            <span class="number">1</span>
+            <span class="add circle tooltip" data-tooltip="plus">+</span>
         </section>
         <section class="status">
-            <button class="but">Куплено</button>
-            <span><b>x</b></span>
+            <button class="but tooltip" data-tooltip="item bought">Куплено</button>
+            <button class="removebut tooltip" data-tooltip="delete item" >x</button>
         </section>
     </section>
 </section>
     <section class="second">
-        <section class="aside"><b>Залишилося</b></section>
+        <section class="aside">Залишилося</section>
         <hr/>
-        <section class="basket">
-            <span class="product-item">
+        <section class="basket ">
+            <span class="product-item lowBasket">
                 Печиво
-                <span class="amount">2</span>
+                <span class="amount circle">2</span>
             </span>
-            <span class="product-item">
+            <span class="product-item lowBasket">
                 Сир
-                <span class="amount">1</span>
+                <span class="amount circle">1</span>
             </span>
         </section>
         <hr/>
-        <section class="aside"><b>Куплено</b></section>
+        <section class="aside">Куплено</section>
         <hr/>
         <section class="basket">
-             <span class="product-item">
+             <span class="product-item some">
                 Помідори
-                <span class="amount">2</span>
+                <span class="amount circle">2</span>
             </span>
         </section>
 
     </section>
-    <!--	<span class="product-item">-->
-    <!--		Apple-->
-    <!--		<span class="amount">4</span>-->
-    <!--	</span>-->
 </body>
 </html>
