@@ -23,17 +23,19 @@ body{
 	padding: 10px;
 	border-radius: 10px;
 }
-@media (max-width: 700px) {
+@media (max-width: 500px) {
 	.allElement {
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.first {
-		width: 100%;
+		width: 95%;
 	}
 
 	.second {
-		width: 100%;
+		width: 95%;
 	}
 }
 
@@ -230,7 +232,74 @@ body{
 	text-align: center;
 }
 
+.name2 {
+	width: 20%;
+}
+.name3 {
+	width: 20%;
+}
 
+.name3 input {
+	width: 100%;
+}
+.name1 {
 
+	width: 20%;
+}
 
+/* badge*/
+.badge {
+	position: fixed;
+	bottom: -75px;
+	left: 10px;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #6C63FF;
+;
+	background-color: #6C63FF;
+	color: #FFFFFF;
+	border-radius: 5px;
+	text-align: center;
+	transition: transform 0.3s, background-color 0.3s;
+	cursor: pointer;
+}
+
+.badge:hover {
+	transform: translateY(-90px);
+	background-color: #6C00AF;
+	font-size: 12px;
+	border:  solid 2px  #6C00AF;
+
+}
+.creator{
+	font-size: 12px;
+}
+.creator-name{
+	font-size: 14px;
+}
+.badge-caption{
+	font-size: 16px;
+}
+.badge-content {
+	padding: 5px;
+	transition: opacity 0.3s;
+}
+
+.badge:hover .badge-content {
+	opacity: 1;
+}
+
+@media print {
+	.badge {
+		height: 70px;
+		padding-top: 20px;
+		border-radius: 20px 20px 0 0;
+		border-color:#8F89FF;
+		background-color: #FFFFFF;
+		color: #6C63FF;
+	}
+	.badge-content {
+		display: none;
+	}
+}
 
