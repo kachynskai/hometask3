@@ -41,7 +41,7 @@ body{
 	justify-content: space-between;
 	align-items: stretch;
 }
-.firstItem, .secondItem, .thirdItem{
+.item{
 	width: 100%;
 	height: 17%;
 	display: flex;
@@ -83,7 +83,7 @@ body{
 	padding: 2%;
 	text-align: center;
 }
-.remove1, .remove2, .remove3 {
+.remove {
 	background-color: red;
 	color: white;
 	font-weight: bold;
@@ -93,20 +93,15 @@ body{
 	border-color: red;
 	border-bottom: solid 2px rgba(182, 7, 6, 0.99);
 }
-.remove3{
-	opacity: 40%;
-}
-.add1, .remove1, .removebut1{
-	visibility: hidden;
-}
-.name1,.name2,.name3, .num, .status{
+/*.remove3{*/
+/*	opacity: 40%;*/
+/*}*/
+
+.num, .status{
 	width: 30%;
 }
 
-.name1,.name2,.name3{
-	margin-top:6px;
-}
-.name1, .some{
+.some{
 	text-decoration-line: line-through;
 	text-decoration-thickness: 1px;
 }
@@ -114,8 +109,16 @@ body{
 	position: relative;
 	display: inline-block;
 }
-.tooltip::before {
+.tooltip::before{
 	content: attr(data-tooltip);
+}
+.bought .status .tooltip::before{
+	content: "Зробити товар не купленим";
+}
+.notBought .status .but.tooltip::before{
+	content: "Зробити товар купленим";
+}
+.tooltip::before {
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -156,7 +159,7 @@ body{
 	gap: 2%;
 	justify-content: flex-end;
 }
-.removebut, .removebut1 {
+.removeItem {
 	width: 12%;
 	height: 95%;
     min-width: 15px;
@@ -170,12 +173,46 @@ body{
 	border-bottom: solid 4px rgba(182, 7, 6, 0.99);
 	border-radius: 20%;
 }
-.removebut1{
-	position: absolute;
+
+.bought .name{
+	width: 30%;
+	margin-top:6px;
+	text-decoration-line: line-through;
+	text-decoration-thickness: 1px;
+}
+.bought .num .remove{
+ visibility: hidden;
+}
+.bought .num .add{
+	visibility: hidden;
+}
+.bought .status .removeItem{
+	display:none;
+}
+.bought .status .but::after{
+	content: "Не куплено";
+}
+
+.notBought .name{
+	width: 30%;
+	margin-top:6px;
+}
+.notBought .status .but::after{
+	content: "Куплено";
+}
+.notBought .num .remove{
+	visibility: visible;
+}
+.notBought .num .add{
+	visibility: visible;
+}
+.notBought .status .removeItem{
+	display:inline-block;
 }
 .aside{
 	height:17%;
 }
+
 .basket{
 	height: 25%;
 }
@@ -207,10 +244,6 @@ body{
 	color: white;
 	display: inline-block;
 	text-align: center;
-}
-
-.name3 input {
-	width: 75%;
 }
 .badge {
 	position: fixed;
