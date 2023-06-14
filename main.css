@@ -7,6 +7,7 @@ body{
 	display: flex;
 	gap: 25px;
 	justify-content: center;
+	min-width: 350px;
 }
 .first{
 	width: 65%;
@@ -129,7 +130,7 @@ body{
 	max-width: 100px;
 	padding: 5px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 10px;
 	background-color: rgba(206, 6, 253, 0.99);
 	color: white;
 	border-radius: 5px;
@@ -174,6 +175,7 @@ body{
 	border-radius: 20%;
 }
 
+
 .bought .name{
 	width: 30%;
 	margin-top:6px;
@@ -209,9 +211,24 @@ body{
 .notBought .status .removeItem{
 	display:inline-block;
 }
+
+.item input{
+	/*width: 151px;*/
+    width: 30%;
+	/*max-width: 151px;*/
+	/*box-sizing: content-box;*/
+	border: none;
+}
+.item input:focus{
+	/*box-sizing: content-box;*/
+	outline-color: cornflowerblue;
+	box-shadow: 0 0 4px #5a86d5;
+
+}
 .aside{
 	height:17%;
 }
+
 
 .basket{
 	height: 25%;
