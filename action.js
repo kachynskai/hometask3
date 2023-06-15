@@ -1,3 +1,52 @@
+if(!localStorage.getItem("tomatoes")) {
+    localStorage.setItem("tomatoes", `    <section class="adding">
+        <input type="text" placeholder=" Назва товару" class="inpName">
+        <button class="butAdd tooltip" data-tooltip="add item">Додати</button>
+    </section>
+    <hr>
+    <section class="item notBought">
+        <section class="name" onclick="editName(this)">Помідори</section>
+        <section class="num">
+            <span class="remove  circle tooltip" data-tooltip="minus">-</span>
+            <span class="number">2</span>
+            <span class="add circle tooltip" data-tooltip="plus">+</span>
+        </section>
+        <section class="status">
+            <button class="but tooltip"></button>
+            <button class="removeItem tooltip" data-tooltip="delete item">x</button>
+        </section>
+    </section>
+    <hr>
+    <section class="item notBought">
+        <section class="name" onclick="editName(this)">Печиво</section>
+        <section class="num">
+            <span class="remove circle  tooltip" data-tooltip="minus">-</span>
+            <span class="number">2</span>
+            <span class="add circle tooltip" data-tooltip="plus">+</span>
+        </section>
+        <section class="status">
+            <button class="but tooltip"></button>
+            <button class="removeItem tooltip" data-tooltip="delete item">x</button>
+        </section>
+    </section>
+    <hr>
+    <section class="item notBought">
+        <section class="name" onclick="editName(this)">Сир</section>
+        <section class="num">
+          <span class="remove circle  tooltip" data-tooltip="minus">-</span>
+            <span class="number">2</span>
+            <span class="add circle tooltip" data-tooltip="plus">+</span>
+        </section>
+        <section class="status">
+            <button class="but tooltip"></button>
+            <button class="removeItem tooltip" data-tooltip="delete item">x</button>
+        </section>
+    </section>`);
+    right();
+}
+let elem  = localStorage.getItem("tomatoes");
+// console.log(elem);
+document.getElementById("left").innerHTML = elem;
 
 let allNames = document.getElementsByClassName("name");
 let grocery = document.getElementsByClassName("but");
@@ -13,6 +62,9 @@ function editable() {
             allNames[i].setAttribute("onclick", "editName(this)");
         }
     }
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
+
 }
 for (let i = 0; i < minusBut.length; i++) {
     minusBut[i].addEventListener("click", function () {
@@ -21,7 +73,7 @@ for (let i = 0; i < minusBut.length; i++) {
 }
 for (let i = 0; i < plusBut.length; i++) {
     plusBut[i].addEventListener("click", function () {
-       addingNumber(this);
+        addingNumber(this);
     });
 }
 function addingNumber(button){
@@ -37,6 +89,9 @@ function addingNumber(button){
         numberSpan.innerText = currentNumber + 1;
         minSpan.classList.remove("lonely");
     }
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
+
 }
 function decreaseNumber(button) {
     const numSection = button.parentNode;
@@ -52,6 +107,9 @@ function decreaseNumber(button) {
         numberSpan.innerText = 1;
         button.classList.add("lonely");
     }
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
+
 }
 
 
@@ -70,6 +128,9 @@ function changeClassForStatus(button) {
         parent.classList.add("notBought");
         nameItem.setAttribute("onclick", "editName(this)");
     }
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
+
 }
 
 //додавання лісенера для кнопок покупки для дефолтного списку
@@ -88,7 +149,8 @@ function removeItem(item) {
     if (hrElement && hrElement.tagName === "HR") {
         hrElement.remove();
     }
-    console.log(allNames);
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
 }
 //додавання лісенера для кнопок видалення для дефолтного списку
 for(let i=0; i<removeButtons.length; i++){
@@ -100,42 +162,47 @@ for(let i=0; i<removeButtons.length; i++){
 function editName(element) {
     if(isNotBought(element)){
 
-    const input = document.createElement("input");
-    const currentName = element.innerText;
-    input.type = "text";
-    input.value = currentName;
-    input.maxLength = 16;
-    input.style.font = window.getComputedStyle(element).getPropertyValue("font");
-    element.parentNode.replaceChild(input, element);
-    input.focus();
+        const input = document.createElement("input");
+        const currentName = element.innerText;
+        input.type = "text";
+        input.value = currentName;
+        input.maxLength = 16;
+        input.style.font = window.getComputedStyle(element).getPropertyValue("font");
+        input.focus();
+        element.parentNode.replaceChild(input, element);
 
-    input.addEventListener("blur", function () {
-        const newName = input.value.trim();
-        const parent = input.parentNode;
+        input.addEventListener("focusout", function () {
+            const newName = input.value.trim();
+            const parent = input.parentNode;
 
-        if (isUnique(newName, allNames) && newName !== "") {
-            let section = document.createElement("section");
-            section.className = "name";
-            section.innerText = newName;
+            if (isUnique(newName, allNames) && newName !== "") {
+                let section = document.createElement("section");
+                section.className = "name";
+                section.innerText = newName;
 
-            section.addEventListener("click", function () {
-                editName(section);
-            });
+                section.addEventListener("click", function () {
+                    editName(section);
+                });
 
-            parent.replaceChild(section, input);
-        } else {
-            let section = document.createElement("section");
-            section.className = "name";
-            section.innerText = currentName;
+                parent.replaceChild(section, input);
+            } else {
+                let section = document.createElement("section");
+                section.className = "name";
+                section.innerText = currentName;
 
-            section.addEventListener("click", function () {
-                editName(section);
-            });
+                section.addEventListener("click", function () {
+                    editName(section);
+                });
 
-            parent.replaceChild(section, input);
-        }
-    });
-}
+                parent.replaceChild(section, input);
+
+            }
+            console.log("HELP");
+            localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+            right();
+        });
+    }
+
 }
 const addButton=document.querySelector(".butAdd");
 function makeItem(itemName) {
@@ -214,6 +281,9 @@ function addItem(){
     }
     itemInput.focus();
     console.log(document.getElementsByClassName("item"));
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+    right();
+
 }
 addButton.addEventListener("click",addItem);
 document.addEventListener("keydown",(event)=>{
@@ -243,5 +313,32 @@ function isLonely(){
 
 }
 
-let elem = document.getElementById("left");
-localStorage.setItem("tomatoes", JSON.stringify(elem));
+function right() {
+    document.getElementById("right-top").innerHTML = "";
+    document.getElementById("right-bottom").innerHTML = "";
+
+    for(let item of document.getElementsByClassName("notBought")) {
+        let element = document.createElement("span");
+        element.classList.add("product-item");
+        element.classList.add("lowBasket");
+        element.innerText = item.getElementsByClassName("name")[0].innerText;
+        let amount = document.createElement("span");
+        amount.classList.add("amount");
+        amount.classList.add("circle");
+        amount.innerText = item.getElementsByClassName("number")[0].innerText;
+        element.appendChild(amount);
+        document.getElementById("right-top").appendChild(element);
+    }
+    for(let item of document.getElementsByClassName("bought")) {
+        let element = document.createElement("span");
+        element.classList.add("product-item");
+        element.classList.add("some");
+        element.innerText = item.getElementsByClassName("name")[0].innerText;
+        let amount = document.createElement("span");
+        amount.classList.add("amount");
+        amount.classList.add("circle");
+        amount.innerText = item.getElementsByClassName("number")[0].innerText;
+        element.appendChild(amount);
+        document.getElementById("right-bottom").appendChild(element);
+    }
+}

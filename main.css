@@ -59,7 +59,7 @@ body{
 }
 .butAdd {
 	width: 23%;
-    min-width: 75px;
+	min-width: 75px;
 	background-color: cornflowerblue;
 	color: white;
 	font-weight: bold;
@@ -107,7 +107,10 @@ body{
 .some{
 	text-decoration-line: line-through;
 	text-decoration-thickness: 1px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
 .tooltip {
 	position: relative;
 	display: inline-block;
@@ -157,7 +160,7 @@ body{
 	border-bottom: solid 2px rgba(27,138,86,0.99) ;
 }
 .status{
-    min-width: 100px;
+	min-width: 100px;
 	display: flex;
 	gap: 2%;
 	justify-content: flex-end;
@@ -165,7 +168,7 @@ body{
 .removeItem {
 	width: 12%;
 	height: 95%;
-    min-width: 15px;
+	min-width: 15px;
 	background-color: red;
 	color: white;
 	padding: 2%;
@@ -185,7 +188,7 @@ body{
 	text-decoration-thickness: 1px;
 }
 .bought .num .remove{
- visibility: hidden;
+	visibility: hidden;
 }
 .bought .num .add{
 	visibility: hidden;
@@ -216,7 +219,7 @@ body{
 
 .item input{
 	/*width: 151px;*/
-    width: 30%;
+	width: 30%;
 	border: 1px solid white;
 	outline:none;
 	box-sizing: border-box;
@@ -238,7 +241,7 @@ body{
 	height: 25%;
 }
 .lowBasket{
-	margin-top: 12px;
+	margin-top: 5px;
 }
 .but {
 	width: 63%;
@@ -255,6 +258,7 @@ body{
 	padding: 1%;
 	border-radius: 10px;
 	display: inline-block;
+	margin-right: 10px;
 }
 .aside{
 	font-size: 25px;
