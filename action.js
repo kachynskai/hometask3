@@ -1,4 +1,8 @@
 
+let allNames = document.getElementsByClassName("name");
+let grocery = document.getElementsByClassName("but");
+let removeButtons=document.getElementsByClassName("removeItem");
+//додати атрибут для зміни імені при запуску програми
 function editable() {
     let allNames = document.getElementsByClassName("name");
     for (let i = 0; i < allNames.length; i++) {
@@ -10,7 +14,7 @@ function editable() {
 }
 
 editable();
-
+//зміна атрибуту=> зовнішнього вигляду при натисканні кнопки купити
 function changeClassForStatus(button) {
     let parent = button.parentNode.parentNode;
     let nameItem = parent.querySelector(".name");
@@ -25,22 +29,34 @@ function changeClassForStatus(button) {
     }
 }
 
-let grocery = document.getElementsByClassName("but");
+//додавання лісенера для кнопок покупки для дефолтного списку
 for (let i = 0; i < grocery.length; i++) {
     grocery[i].addEventListener("click", function () {
-        changeClassForStatus(this); // Використовуйте "this", а не "grocery[i]"
+        changeClassForStatus(this);
     });
 }
-let removeButtons=document.getElementsByClassName("removeItem");
+
+//функція для видалення елемента і hr над ним якщо такий існує
+function removeItem(item) {
+    const itemContainer = item.closest(".item");
+    const hrElement = itemContainer.previousElementSibling; // Отримати попередній елемент
+
+    itemContainer.remove();
+    if (hrElement && hrElement.tagName === "HR") {
+        hrElement.remove();
+    }
+    console.log(allNames);
+}
+//додавання лісенера для кнопок видалення для дефолтного списку
 for(let i=0; i<removeButtons.length; i++){
     removeButtons[i].addEventListener("click",function (){
-        this.closest(".item").remove();
+        removeItem(this);
     })
 }
 
 function editName(element) {
     if(isNotBought(element)){
-    let allNames = document.getElementsByClassName("name");
+
     const input = document.createElement("input");
     const currentName = element.innerText;
     input.type = "text";
@@ -78,6 +94,84 @@ function editName(element) {
     });
 }
 }
+const addButton=document.querySelector(".butAdd");
+function makeItem(itemName) {
+    const newItem = document.createElement("section");
+    newItem.className = "item notBought";
+
+    const nameSection = document.createElement("section");
+    nameSection.className = "name";
+    nameSection.innerText = itemName;
+
+    const numSection = document.createElement("section");
+    numSection.className = "num";
+    const minusSpan=document.createElement("span");
+    minusSpan.className="remove circle tooltip";
+    minusSpan.setAttribute("data-tooltip","minus");
+    minusSpan.innerText="-";
+    numSection.appendChild(minusSpan);
+    const numberSpan = document.createElement("span");
+    numberSpan.className = "number";
+    numberSpan.innerText = "1";
+    numSection.appendChild(numberSpan);
+    const plusSpan=document.createElement("span");
+    plusSpan.className="add circle tooltip";
+    plusSpan.setAttribute("data-tooltip","plus");
+    plusSpan.innerText="+";
+    numSection.appendChild(plusSpan);
+
+    const statusSection = document.createElement("section");
+    statusSection.className = "status";
+    const button1 = document.createElement("button");
+    button1.className = "but tooltip";
+    button1.addEventListener("click",function (){
+        changeClassForStatus(this);
+    })
+    const button2 = document.createElement("button");
+    button2.className = "removeItem tooltip";
+    button2.setAttribute("data-tooltip", "delete item");
+    button2.innerText = "x";
+    button2.addEventListener("click", function (){
+        removeItem(this);
+    })
+    statusSection.appendChild(button1);
+    statusSection.appendChild(button2);
+
+    newItem.appendChild(nameSection);
+    newItem.appendChild(numSection);
+    newItem.appendChild(statusSection);
+
+    const hr = document.createElement("hr");
+
+    const firstSection = document.querySelector(".first");
+
+    firstSection.appendChild(hr);
+    firstSection.appendChild(newItem);
+    editable();
+}
+
+
+function addItem(){
+    const itemInput=document.querySelector(".inpName");
+    const itemName=itemInput.value;
+    if(itemName){
+        if(isUnique(itemName,allNames)&&itemName!==""){
+            makeItem(itemName);
+        }else{
+            let message="Продукт з такою назвою вже існує! Будь ласка, придумайте щось нове!!"
+            alert(message);
+        }
+        itemInput.value="";
+    }
+    itemInput.focus();
+    console.log(document.getElementsByClassName("item"));
+}
+addButton.addEventListener("click",addItem);
+document.addEventListener("keydown",(event)=>{
+    if(event.key==="Enter"){
+        addItem();
+    }
+})
 function isNotBought(element){
     let parent= element.parentNode;
     return parent&&parent.classList.contains("notBought");
