@@ -2,9 +2,11 @@
 let allNames = document.getElementsByClassName("name");
 let grocery = document.getElementsByClassName("but");
 let removeButtons=document.getElementsByClassName("removeItem");
+let minusBut=document.getElementsByClassName("remove ");
+let plusBut=document.getElementsByClassName("add");
 //додати атрибут для зміни імені при запуску програми
 function editable() {
-    let allNames = document.getElementsByClassName("name");
+
     for (let i = 0; i < allNames.length; i++) {
         let parent = allNames[i].parentNode;
         if (parent.classList.contains("notBought")) {
@@ -12,6 +14,47 @@ function editable() {
         }
     }
 }
+for (let i = 0; i < minusBut.length; i++) {
+    minusBut[i].addEventListener("click", function () {
+        decreaseNumber(this);
+    });
+}
+for (let i = 0; i < plusBut.length; i++) {
+    plusBut[i].addEventListener("click", function () {
+       addingNumber(this);
+    });
+}
+function addingNumber(button){
+    const numSection = button.parentNode;
+    const numberSpan = numSection.querySelector(".number");
+    const currentNumber = parseInt(numberSpan.innerText);
+    const minSpan=numSection.querySelector(".remove")
+
+    if (currentNumber > 1) {
+        numberSpan.innerText = currentNumber + 1;
+    }
+    else{
+        numberSpan.innerText = currentNumber + 1;
+        minSpan.classList.remove("lonely");
+    }
+}
+function decreaseNumber(button) {
+    const numSection = button.parentNode;
+    const numberSpan = numSection.querySelector(".number");
+    const currentNumber = parseInt(numberSpan.innerText);
+
+    if (currentNumber > 1) {
+        numberSpan.innerText = currentNumber - 1;
+        if( numberSpan.innerText ==='1'){
+            button.classList.add("lonely");
+        }
+    } else {
+        numberSpan.innerText = 1;
+        button.classList.add("lonely");
+    }
+}
+
+
 
 editable();
 //зміна атрибуту=> зовнішнього вигляду при натисканні кнопки купити
@@ -106,9 +149,12 @@ function makeItem(itemName) {
     const numSection = document.createElement("section");
     numSection.className = "num";
     const minusSpan=document.createElement("span");
-    minusSpan.className="remove circle tooltip";
+    minusSpan.className="remove circle lonely tooltip";
     minusSpan.setAttribute("data-tooltip","minus");
     minusSpan.innerText="-";
+    minusSpan.addEventListener("click", function (){
+        decreaseNumber(this);
+    })
     numSection.appendChild(minusSpan);
     const numberSpan = document.createElement("span");
     numberSpan.className = "number";
@@ -118,6 +164,9 @@ function makeItem(itemName) {
     plusSpan.className="add circle tooltip";
     plusSpan.setAttribute("data-tooltip","plus");
     plusSpan.innerText="+";
+    plusSpan.addEventListener("click",function (){
+        addingNumber(this);
+    })
     numSection.appendChild(plusSpan);
 
     const statusSection = document.createElement("section");
@@ -186,4 +235,13 @@ function isUnique(name, names) {
     }
     return true;
 }
+function isLonely(){
+    let num= this.closest(".number");
+    let text=num.innerText;
+    let lonely=1;
+    return text ===String(lonely) ;
 
+}
+
+let elem = document.getElementById("left");
+localStorage.setItem("tomatoes", JSON.stringify(elem));

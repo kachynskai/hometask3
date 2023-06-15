@@ -96,9 +96,9 @@ body{
 	border-color: red;
 	border-bottom: solid 2px rgba(182, 7, 6, 0.99);
 }
-/*.remove3{*/
-/*	opacity: 40%;*/
-/*}*/
+.lonely{
+	opacity: 40%;
+}
 
 .num, .status{
 	width: 30%;
@@ -217,13 +217,15 @@ body{
 .item input{
 	/*width: 151px;*/
     width: 30%;
-	/*max-width: 151px;*/
-	/*box-sizing: content-box;*/
-	border: none;
+	border: 1px solid white;
+	outline:none;
+	box-sizing: border-box;
 }
 .item input:focus{
 	/*box-sizing: content-box;*/
-	outline-color: cornflowerblue;
+	border: 1px solid cornflowerblue;
+
+	/*outline-color: cornflowerblue;*/
 	box-shadow: 0 0 4px #5a86d5;
 
 }
