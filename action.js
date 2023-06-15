@@ -62,8 +62,9 @@ function editable() {
             allNames[i].setAttribute("onclick", "editName(this)");
         }
     }
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 
 }
 for (let i = 0; i < minusBut.length; i++) {
@@ -89,8 +90,9 @@ function addingNumber(button){
         numberSpan.innerText = currentNumber + 1;
         minSpan.classList.remove("lonely");
     }
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 
 }
 function decreaseNumber(button) {
@@ -107,8 +109,9 @@ function decreaseNumber(button) {
         numberSpan.innerText = 1;
         button.classList.add("lonely");
     }
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 
 }
 
@@ -128,8 +131,9 @@ function changeClassForStatus(button) {
         parent.classList.add("notBought");
         nameItem.setAttribute("onclick", "editName(this)");
     }
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 
 }
 
@@ -149,8 +153,9 @@ function removeItem(item) {
     if (hrElement && hrElement.tagName === "HR") {
         hrElement.remove();
     }
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 }
 //додавання лісенера для кнопок видалення для дефолтного списку
 for(let i=0; i<removeButtons.length; i++){
@@ -161,7 +166,6 @@ for(let i=0; i<removeButtons.length; i++){
 
 function editName(element) {
     if(isNotBought(element)){
-
         const input = document.createElement("input");
         const currentName = element.innerText;
         input.type = "text";
@@ -198,8 +202,9 @@ function editName(element) {
 
             }
             console.log("HELP");
-            localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
             right();
+            localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
         });
     }
 
@@ -265,8 +270,6 @@ function makeItem(itemName) {
     firstSection.appendChild(newItem);
     editable();
 }
-
-
 function addItem(){
     const itemInput=document.querySelector(".inpName");
     const itemName=itemInput.value;
@@ -281,8 +284,9 @@ function addItem(){
     }
     itemInput.focus();
     console.log(document.getElementsByClassName("item"));
-    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
     right();
+    localStorage.setItem("tomatoes", document.getElementById("left").innerHTML);
+
 
 }
 addButton.addEventListener("click",addItem);
@@ -305,14 +309,6 @@ function isUnique(name, names) {
     }
     return true;
 }
-function isLonely(){
-    let num= this.closest(".number");
-    let text=num.innerText;
-    let lonely=1;
-    return text ===String(lonely) ;
-
-}
-
 function right() {
     document.getElementById("right-top").innerHTML = "";
     document.getElementById("right-bottom").innerHTML = "";
